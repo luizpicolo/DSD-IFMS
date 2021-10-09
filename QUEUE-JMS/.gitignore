@@ -1,0 +1,6 @@
+activemq-data
+bin/*
+!bin/.keep
+.classpath
+.project
+.settings/*
