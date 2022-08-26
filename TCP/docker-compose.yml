@@ -1,0 +1,9 @@
+version: '3.8'
+services:
+  servidor:
+    build:
+      context: .
+    container_name: dsd_server_tcp
+    ports:
+      - 8888:8888
+    command: java -classpath /app/src Servidor
