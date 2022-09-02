@@ -6,14 +6,17 @@ public class UDPServer {
 		DatagramSocket aSocket = null;
 
 		try {
-			aSocket = new DatagramSocket(6789);
-			System.out.println("Ouvindo a porta: " + 6789);
+			aSocket = new DatagramSocket(8889);
+			System.out.println("Ouvindo a porta: " + 8889);
 			
 			byte[] buffer = new byte[1000];
 			while (true) {
 				DatagramPacket request = new DatagramPacket(buffer, buffer.length);
 				aSocket.receive(request);
-				
+
+				System.out.println("Ip do remetente");
+				System.out.println(request.getAddress());
+
 				DatagramPacket reply = new DatagramPacket(request.getData(), request.getLength(), request.getAddress(), request.getPort());
 				aSocket.send(reply);
 			}

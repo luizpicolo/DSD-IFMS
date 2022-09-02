@@ -1,20 +1,31 @@
 import java.net.*;
 import java.io.*;
+import java.lang.reflect.Array;
 
 public class UDPClient {
-	public static void main(String[] args) {
+	/**
+	 * @param args
+	 */
+	public static void main(String[] data) {
 		DatagramSocket aSocket = null;
 		
 		try {
-			aSocket = new DatagramSocket(4444);
-			byte[] m = args[0].getBytes();
-			InetAddress aHost = InetAddress.getByName(args[1]);
-			int serverPort = 6789;
+			aSocket = new DatagramSocket();
+			byte[] m = data[0].getBytes();
+			InetAddress aHost = InetAddress.getByName(data[1]);
+			
+			int serverPort = 0;
+			if (data[2].isEmpty()){
+				serverPort = 8889;
+			} else {
+				serverPort = Integer.parseInt(data[2]);
+			}
 			
 			DatagramPacket request = new DatagramPacket(m, m.length, aHost, serverPort);
 			aSocket.send(request);
-			
+
 			byte[] buffer = new byte[1000];
+			System.out.println(serverPort);
 			DatagramPacket reply = new DatagramPacket(buffer, buffer.length);
 			aSocket.receive(reply);
 			System.out.println("Reply: " + new String(reply.getData()));
