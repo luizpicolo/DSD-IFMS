@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  servidor:
+    build:
+      context: .
+      network: host
+    container_name: dsd_server_udp
+    ports:
+      - "8889:8888/udp"
+    command: java -classpath /app/src UDPServer
