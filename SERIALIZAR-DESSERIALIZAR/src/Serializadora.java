@@ -8,8 +8,10 @@ import java.io.ObjectOutputStream;
 public class Serializadora {
 	@SuppressWarnings("resource")
 	public static void main(String[] args) {
+		
 		Pessoa s = new Pessoa();
 		s.setNome("Luiz Picolo");
+		
 		try {
 			ObjectOutput o = new ObjectOutputStream(new FileOutputStream("objeto.teste"));
 			o.writeObject(s);

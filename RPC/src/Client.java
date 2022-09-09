@@ -7,6 +7,11 @@ public class Client {
 	//DEFINE A URL DO SERVIDOR
     private static final String URL_SERVIDOR = "http://localhost:8185"; 
     private XmlRpcClient cliente;
+
+    public static void main(String[] args) throws Exception {
+        Client x = new Client();
+        System.out.println("O Resultado da soma é: " + x.subtrair(2, 1));
+    }
 	
     public Client() {
 		try {
@@ -43,11 +48,6 @@ public class Client {
         Object[] parametros = new Object[]{new Integer(x), new Integer(y)};
         Double resultado = (Double) cliente.execute("Calc.multiplicacao", parametros);
         return resultado;
-    }
-    
-    public static void main(String[] args) throws Exception {
-        Client x = new Client();
-        System.out.println("O Resultado da soma é: " + x.subtrair(2, 1));
     }
 }
 

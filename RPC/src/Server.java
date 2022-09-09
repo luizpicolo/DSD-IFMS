@@ -4,6 +4,10 @@ import org.apache.xmlrpc.webserver.WebServer;
 
 public class Server {
 
+    public static void main(String[] args) {
+		new Server();
+    }
+    
     private Server() {
         try {
 			// Cria um servidor web na porta 8185
@@ -21,9 +25,5 @@ public class Server {
         } catch (Exception exception) {
             System.err.println("JavaServer: " + exception);
         }
-    }
-
-    public static void main(String[] args) {
-		new Server();
     }
 }
